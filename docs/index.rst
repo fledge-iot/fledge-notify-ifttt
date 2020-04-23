@@ -5,7 +5,7 @@
 IFTTT Delivery Plugin
 =====================
 
-The *fledge-delivery-ifttt* is a notification delivery plugin designed to trigger an action on the *If This Than That* IoT platform. IFTTT allows the user to setup a webhook that can be used to trigger processing on the platform. The webhook could be sending an IFTTT notification to a destination not support by any Fledge plugin to controlling a device that is controllable via IFTTT.
+The *fledge-notify-ifttt* is a notification delivery plugin designed to trigger an action on the *If This Than That* IoT platform. IFTTT allows the user to setup a webhook that can be used to trigger processing on the platform. The webhook could be sending an IFTTT notification to a destination not support by any Fledge plugin to controlling a device that is controllable via IFTTT.
 
 In order to use the IFTTT webhook you must obtain a key from IFTTT by visiting your IFTTT account
 
@@ -29,7 +29,7 @@ In order to use the IFTTT webhook you must obtain a key from IFTTT by visiting y
 
   - Select the action you wish to invoke
 
-Once you have setup your webhook on IFTTT you can now proceed to setup the Fledge delivery notification plugin. Create you notification, choose and configure you r notification rule. Select the IFTTT delivery plugin and click on *Next*. You will be presented with the IFTTT plugin configuration page.
+Once you have setup your webhook on IFTTT you can now proceed to setup the Fledge delivery notification plugin. Create you notification, choose and configure your notification rule. Select the IFTTT delivery plugin and click on *Next*. You will be presented with the IFTTT plugin configuration page.
 
 +-----------+
 | |ifttt_2| |
