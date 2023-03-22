@@ -40,9 +40,9 @@ IFTTT::~IFTTT()
  * @param triggerReason		Why the notification is being sent
  * @param message		The message to send
  */
-void IFTTT::notify(const string& notificationName, const string& triggerReason, const string& message)
+bool IFTTT::notify(const string& notificationName, const string& triggerReason, const string& message)
 {
-SimpleHttps	https("maker.ifttt.com");
+	SimpleHttps	https("maker.ifttt.com");
 
 	lock_guard<mutex> guard(m_mutex);
 	std::vector<std::pair<std::string, std::string>> headers;
@@ -57,12 +57,17 @@ SimpleHttps	https("maker.ifttt.com");
 		if ((errorCode = https.sendRequest("POST", url, headers, "")) != 200 && errorCode != 202)
 		{
 			Logger::getLogger()->error("Failed to send notification to IFTTT %s, errorCode %d", url.c_str(), errorCode);
+			return false;
 		}
 	} catch (exception& e) {
 		Logger::getLogger()->error("IFTTT notification failed: %s", e.what());
+		return false;
 	} catch (...) {
 		Logger::getLogger()->error("IFTTT notification failed.");
+		return false;
 	}
+
+	return true;
 }
 
 /**
