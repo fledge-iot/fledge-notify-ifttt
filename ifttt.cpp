@@ -53,10 +53,11 @@ bool IFTTT::notify(const string& notificationName, const string& triggerReason, 
 
 	Logger::getLogger()->debug("POST IFTTT notification to %s", url.c_str());
 	try {
-		int errorCode;
-		if ((errorCode = https.sendRequest("POST", url, headers, "")) != 200 && errorCode != 202)
+		int resCode = https.sendRequest("POST", url, headers, "");
+		std::string strResCode = to_string(resCode);
+		if(strResCode[0] != '2')
 		{
-			Logger::getLogger()->error("Failed to send notification to IFTTT %s, errorCode %d", url.c_str(), errorCode);
+			Logger::getLogger()->error("Failed to send notification to IFTTT %s, errorCode %d", url.c_str(), resCode);
 			return false;
 		}
 	} catch (exception& e) {
